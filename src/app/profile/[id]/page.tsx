@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/context/AuthContext';
-import { User, Mail, Phone, BookOpen, Layers, Edit3, Calendar, FolderGit, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { User, Users, Mail, Phone, BookOpen, Layers, Edit3, Calendar, FolderGit, ExternalLink, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
