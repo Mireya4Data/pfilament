@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Showcase Hub - Student Project Showcase & Collaboration Platform",
-  description: "A premium platform where students showcase their projects, form teams, and collaborate with lecturers.",
+  title: "SENFUTOPROJECTS - Student Project Showcase & Collaboration Platform",
+  description: "SENFUTOPROJECTS — a premium platform where students showcase their projects, form teams, and collaborate with lecturers.",
 };
 
 export default function RootLayout({

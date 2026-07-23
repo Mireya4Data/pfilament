@@ -37,24 +37,24 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[80vh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden border-white/10">
+      <div className="w-full max-w-md glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden border-black/10">
         
         {/* Glow accent */}
-        <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#58a6ff]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#a371f7]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#1a7fe0]/08 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#7c3aed]/08 rounded-full blur-3xl pointer-events-none" />
 
         <div className="text-center mb-8 relative animate-fade-in space-y-2">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 p-0.5 mx-auto flex items-center justify-center">
-            <div className="w-full h-full bg-[#0d1117] rounded-[10px] flex items-center justify-center">
+            <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
               <BookOpen className="h-6 w-6 text-[#58a6ff]" />
             </div>
           </div>
 
-          <h2 className="text-2xl font-extrabold text-white">
+          <h2 className="text-2xl font-extrabold text-[#0d1117]">
             Welcome Back
           </h2>
-          <p className="text-xs text-[#8b949e]">
-            Sign in to your Fillamanet workspace
+          <p className="text-xs text-[#57606a]">
+            Sign in to your SENFUTOPROJECTS workspace
           </p>
         </div>
 
@@ -66,11 +66,11 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8b949e] pointer-events-none" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#57606a] pointer-events-none" />
               <input
                 type="email"
                 required
@@ -83,11 +83,11 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8b949e] pointer-events-none" />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#57606a] pointer-events-none" />
               <input
                 type="password"
                 required
@@ -107,9 +107,9 @@ export default function LoginPage() {
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
 
-          <p className="text-center text-xs text-[#8b949e] mt-4">
+          <p className="text-center text-xs text-[#57606a] mt-4">
             Don't have an account?{' '}
-            <Link href="/signup" className="text-[#58a6ff] hover:underline font-semibold">
+            <Link href="/signup" className="text-[#1a7fe0] hover:underline font-semibold">
               Sign Up
             </Link>
           </p>

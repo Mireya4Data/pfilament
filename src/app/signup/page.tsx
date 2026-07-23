@@ -119,8 +119,8 @@ export default function SignupPage() {
         throw new Error('Signup succeeded but no user details returned.');
       }
 
-      let finalDeptId = departmentId;
-      if ((departments.length === 0 || departmentId === 'other') && customDepartmentName.trim()) {
+      let finalDeptId: string | null = null;
+      if (customDepartmentName.trim()) {
         try {
           const { data: newDept } = await supabase
             .from('departments')
@@ -138,7 +138,7 @@ export default function SignupPage() {
       const { error: updateError } = await supabase
         .from('profiles')
         .update({
-          department_id: finalDeptId && finalDeptId !== 'other' ? finalDeptId : null,
+          department_id: finalDeptId ?? null,
           level: role === 'student' ? level : null,
           academic_session: academicSession,
           phone: phone || null,
@@ -167,9 +167,9 @@ export default function SignupPage() {
   if (emailSent) {
     return (
       <div className="min-h-screen flex flex-col justify-center items-center py-12 px-4">
-        <div className="w-full max-w-md glass-panel p-10 rounded-2xl relative overflow-hidden border-white/10 text-center animate-fade-in">
-          <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#58a6ff]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#3fb950]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="w-full max-w-md glass-panel p-10 rounded-2xl relative overflow-hidden border-black/10 text-center animate-fade-in">
+          <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#1a7fe0]/08 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#1a7f37]/08 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center space-y-6">
             <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#58a6ff]/20 to-[#3fb950]/20 border border-[#58a6ff]/30 flex items-center justify-center mx-auto">
@@ -177,28 +177,28 @@ export default function SignupPage() {
             </div>
 
             <div className="space-y-2">
-              <h2 className="text-2xl font-extrabold text-white">Check Your Email</h2>
-              <p className="text-sm text-[#8b949e] leading-relaxed">
+              <h2 className="text-2xl font-extrabold text-[#0d1117]">Check Your Email</h2>
+              <p className="text-sm text-[#57606a] leading-relaxed">
                 We sent a verification link to
               </p>
-              <p className="text-sm font-bold text-[#58a6ff] break-all">
+              <p className="text-sm font-bold text-[#1a7fe0] break-all">
                 {registeredEmail}
               </p>
             </div>
 
-            <div className="w-full p-4 rounded-xl bg-[#161b22] border border-white/10 text-left space-y-3">
-              <p className="text-xs text-[#8b949e] font-semibold uppercase tracking-wider">Next steps</p>
-              <ol className="space-y-2 text-xs text-[#c9d1d9]">
+              <div className="w-full p-4 rounded-xl bg-[#f0f3f8] border border-black/10 text-left space-y-3">
+              <p className="text-xs text-[#57606a] font-semibold uppercase tracking-wider">Next steps</p>
+              <ol className="space-y-2 text-xs text-[#0d1117]">
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#58a6ff]/20 text-[#58a6ff] font-bold text-[10px] flex items-center justify-center mt-0.5">1</span>
-                  Open your email inbox and look for a message from Fillamanet
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#1a7fe0]/20 text-[#1a7fe0] font-bold text-[10px] flex items-center justify-center mt-0.5">1</span>
+                  Open your email inbox and look for a message from SENFUTOPROJECTS
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="shrink-0 w-5 h-5 rounded-full bg-[#58a6ff]/20 text-[#58a6ff] font-bold text-[10px] flex items-center justify-center mt-0.5">2</span>
-                  Click the <strong className="text-white">Verify Email</strong> link inside the email
+                  Click the <strong className="text-[#0d1117]">Verify Email</strong> link inside the email
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#3fb950]/20 text-[#3fb950] font-bold text-[10px] flex items-center justify-center mt-0.5">3</span>
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#1a7f37]/20 text-[#1a7f37] font-bold text-[10px] flex items-center justify-center mt-0.5">3</span>
                   You&apos;ll be redirected and logged in automatically
                 </li>
               </ol>
@@ -208,7 +208,7 @@ export default function SignupPage() {
               Didn&apos;t receive the email? Check your spam folder or{' '}
               <button
                 onClick={() => setEmailSent(false)}
-                className="text-[#58a6ff] hover:underline font-semibold"
+                className="text-[#1a7fe0] hover:underline font-semibold"
               >
                 try again
               </button>
@@ -229,22 +229,22 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-2xl glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden border-white/10">
+      <div className="w-full max-w-2xl glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden border-black/10">
 
-        <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#58a6ff]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#a371f7]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#1a7fe0]/08 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#7c3aed]/08 rounded-full blur-3xl pointer-events-none" />
 
         <div className="text-center mb-8 relative space-y-2">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 p-0.5 mx-auto flex items-center justify-center">
-            <div className="w-full h-full bg-[#0d1117] rounded-[10px] flex items-center justify-center">
+            <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
               <BookOpen className="h-6 w-6 text-[#58a6ff]" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-white">
+          <h2 className="text-2xl font-extrabold text-[#0d1117]">
             Create Your Account
           </h2>
-          <p className="text-xs text-[#8b949e]">
-            Join <span className="text-[#58a6ff] font-semibold">Fillamanet</span> — portfolio &amp; collaboration platform
+          <p className="text-xs text-[#57606a]">
+            Join <span className="text-[#1a7fe0] font-semibold">SENFUTOPROJECTS</span> — portfolio &amp; collaboration platform
           </p>
         </div>
 
@@ -256,13 +256,13 @@ export default function SignupPage() {
 
         <form onSubmit={handleSignup} className="space-y-6">
           {/* Avatar Upload */}
-          <div className="flex flex-col items-center justify-center space-y-2 pb-4 border-b border-white/10">
+          <div className="flex flex-col items-center justify-center space-y-2 pb-4 border-b border-black/10">
             <div className="relative group">
-              <div className="w-20 h-20 rounded-full border border-white/15 bg-[#161b22] flex items-center justify-center overflow-hidden">
+              <div className="w-20 h-20 rounded-full border border-black/15 bg-[#f0f3f8] flex items-center justify-center overflow-hidden">
                 {avatarPreview ? (
                   <img src={avatarPreview} alt="Avatar Preview" className="w-full h-full object-cover" />
                 ) : (
-                  <User className="h-8 w-8 text-[#8b949e]" />
+                  <User className="h-8 w-8 text-[#57606a]" />
                 )}
               </div>
               <label
@@ -279,12 +279,12 @@ export default function SignupPage() {
                 className="hidden"
               />
             </div>
-            <span className="text-[11px] text-[#8b949e]">Profile Avatar (Cloudinary)</span>
+            <span className="text-[11px] text-[#57606a]">Profile Avatar (Cloudinary)</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Full Name *
               </label>
               <input
@@ -298,7 +298,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Email Address *
               </label>
               <input
@@ -312,7 +312,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Username *
               </label>
               <input
@@ -326,7 +326,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Password *
               </label>
               <input
@@ -340,13 +340,13 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Account Role
               </label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value as any)}
-                className="w-full glass-input bg-[#0d1117] cursor-pointer"
+                className="w-full glass-input cursor-pointer"
               >
                 <option value="student">Student</option>
                 <option value="lecturer">Lecturer</option>
@@ -355,7 +355,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Registration / ID Number *
               </label>
               <input
@@ -369,20 +369,16 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 Department
               </label>
-              <select
-                value={departmentId}
-                onChange={(e) => setDepartmentId(e.target.value)}
-                className="w-full glass-input bg-[#0d1117] cursor-pointer"
-              >
-                {departments.map((dept) => (
-                  <option key={dept.id} value={dept.id}>
-                    {dept.name}
-                  </option>
-                ))}
-              </select>
+              <input
+                type="text"
+                placeholder="e.g. Computer Science"
+                value={customDepartmentName}
+                onChange={(e) => setCustomDepartmentName(e.target.value)}
+                className="w-full glass-input"
+              />
             </div>
 
             <div>
@@ -400,13 +396,13 @@ export default function SignupPage() {
 
             {role === 'student' && (
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                   Academic Level
                 </label>
                 <select
                   value={level}
                   onChange={(e) => setLevel(e.target.value)}
-                  className="w-full glass-input bg-[#0d1117] cursor-pointer"
+                  className="w-full glass-input cursor-pointer"
                 >
                   <option value="100">100 Level</option>
                   <option value="200">200 Level</option>
@@ -420,7 +416,7 @@ export default function SignupPage() {
             )}
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#8b949e] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#57606a] mb-2">
                 GitHub Profile URL
               </label>
               <input
@@ -441,9 +437,9 @@ export default function SignupPage() {
             {loading ? 'Registering Account...' : 'Create Account'}
           </button>
 
-          <p className="text-center text-xs text-[#8b949e] mt-4">
+          <p className="text-center text-xs text-[#57606a] mt-4">
             Already have an account?{' '}
-            <Link href="/login" className="text-[#58a6ff] hover:underline font-semibold">
+            <Link href="/login" className="text-[#1a7fe0] hover:underline font-semibold">
               Log In
             </Link>
           </p>
