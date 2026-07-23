@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { uploadToCloudinary } from '@/app/actions/upload';
-import { Upload, Lock, Mail, User, Phone, BookOpen, Layers, Calendar, UserCheck } from 'lucide-react';
+import { Upload, Mail, User, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
@@ -23,8 +22,6 @@ const Github = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function SignupPage() {
-  const router = useRouter();
-  
   // Form fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,16 +36,17 @@ export default function SignupPage() {
   const [linkedinUrl, setLinkedinUrl] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
   const [role, setRole] = useState<'student' | 'lecturer' | 'admin'>('student');
-  
+
   // File upload state
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
-  
+
   // Status states
   const [departments, setDepartments] = useState<{ id: string; name: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+  const [registeredEmail, setRegisteredEmail] = useState('');
 
   // Fetch departments
   useEffect(() => {
@@ -85,7 +83,6 @@ export default function SignupPage() {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
-    setSuccessMsg('');
 
     try {
       if (password.length < 6) {
@@ -156,10 +153,9 @@ export default function SignupPage() {
         console.warn('Profile updates will complete upon login context:', updateError.message);
       }
 
-      setSuccessMsg('Registration successful! Redirecting to sign in...');
-      setTimeout(() => {
-        router.push('/login');
-      }, 2000);
+      // Show inline email verification screen
+      setRegisteredEmail(email);
+      setEmailSent(true);
     } catch (err: any) {
       setErrorMsg(err.message || 'An error occurred during signup');
     } finally {
@@ -167,10 +163,74 @@ export default function SignupPage() {
     }
   };
 
+  // ─── Email Verification Screen ────────────────────────────────────────────
+  if (emailSent) {
+    return (
+      <div className="min-h-screen flex flex-col justify-center items-center py-12 px-4">
+        <div className="w-full max-w-md glass-panel p-10 rounded-2xl relative overflow-hidden border-white/10 text-center animate-fade-in">
+          <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#58a6ff]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#3fb950]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col items-center space-y-6">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#58a6ff]/20 to-[#3fb950]/20 border border-[#58a6ff]/30 flex items-center justify-center mx-auto">
+              <Mail className="h-10 w-10 text-[#58a6ff]" />
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-extrabold text-white">Check Your Email</h2>
+              <p className="text-sm text-[#8b949e] leading-relaxed">
+                We sent a verification link to
+              </p>
+              <p className="text-sm font-bold text-[#58a6ff] break-all">
+                {registeredEmail}
+              </p>
+            </div>
+
+            <div className="w-full p-4 rounded-xl bg-[#161b22] border border-white/10 text-left space-y-3">
+              <p className="text-xs text-[#8b949e] font-semibold uppercase tracking-wider">Next steps</p>
+              <ol className="space-y-2 text-xs text-[#c9d1d9]">
+                <li className="flex items-start gap-2">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#58a6ff]/20 text-[#58a6ff] font-bold text-[10px] flex items-center justify-center mt-0.5">1</span>
+                  Open your email inbox and look for a message from Fillamanet
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#58a6ff]/20 text-[#58a6ff] font-bold text-[10px] flex items-center justify-center mt-0.5">2</span>
+                  Click the <strong className="text-white">Verify Email</strong> link inside the email
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[#3fb950]/20 text-[#3fb950] font-bold text-[10px] flex items-center justify-center mt-0.5">3</span>
+                  You&apos;ll be redirected and logged in automatically
+                </li>
+              </ol>
+            </div>
+
+            <p className="text-[11px] text-[#8b949e]">
+              Didn&apos;t receive the email? Check your spam folder or{' '}
+              <button
+                onClick={() => setEmailSent(false)}
+                className="text-[#58a6ff] hover:underline font-semibold"
+              >
+                try again
+              </button>
+              .
+            </p>
+
+            <Link
+              href="/login"
+              className="w-full glass-button justify-center py-2.5 text-xs font-semibold uppercase tracking-wider"
+            >
+              Go to Login
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-2xl glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden border-white/10">
-        
+
         <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#58a6ff]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#a371f7]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -181,22 +241,16 @@ export default function SignupPage() {
             </div>
           </div>
           <h2 className="text-2xl font-extrabold text-white">
-            Create Developer Account
+            Create Your Account
           </h2>
           <p className="text-xs text-[#8b949e]">
-            Join the Showcase & Collaboration Platform
+            Join <span className="text-[#58a6ff] font-semibold">Fillamanet</span> — portfolio &amp; collaboration platform
           </p>
         </div>
 
         {errorMsg && (
           <div className="mb-6 p-4 rounded-lg bg-[#f85149]/10 border border-[#f85149]/30 text-[#f85149] text-xs font-medium">
             {errorMsg}
-          </div>
-        )}
-
-        {successMsg && (
-          <div className="mb-6 p-4 rounded-lg bg-[#2ea043]/10 border border-[#2ea043]/30 text-[#3fb950] text-xs font-medium">
-            {successMsg}
           </div>
         )}
 

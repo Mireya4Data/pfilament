@@ -40,14 +40,14 @@ export default function Navbar() {
           
           {/* Left: Brand & Global Search */}
           <div className="flex items-center space-x-6 shrink-0">
-            <Link href="/" className="flex items-center space-x-2 text-white group">
+            <Link href="/" className="flex items-center space-x-2 text-white group shrink-0">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 via-purple-600 to-emerald-500 p-0.5 flex items-center justify-center">
                 <div className="w-full h-full bg-[#0d1117] rounded-[7px] flex items-center justify-center group-hover:bg-transparent transition-colors">
                   <BookOpen className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <span className="font-extrabold tracking-tight text-base text-white flex items-center gap-1.5">
-                Showcase <span className="text-[#58a6ff] font-semibold text-xs px-1.5 py-0.5 rounded bg-[#58a6ff]/10 border border-[#58a6ff]/20">HUB</span>
+              <span className="font-extrabold tracking-tight text-base text-white">
+                Fill<span className="text-[#58a6ff]">a</span>manet
               </span>
             </Link>
 
@@ -180,16 +180,16 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
                 <Link
                   href="/login"
-                  className="text-xs font-bold text-[#c9d1d9] hover:text-white px-3 py-1.5 transition"
+                  className="text-xs font-bold text-[#c9d1d9] hover:text-white px-3 py-1.5 rounded-md border border-white/10 hover:border-white/20 transition whitespace-nowrap"
                 >
                   Log In
                 </Link>
                 <Link
                   href="/signup"
-                  className="text-xs font-semibold glass-button px-3.5 py-1.5"
+                  className="text-xs font-semibold glass-button px-3 py-1.5 whitespace-nowrap"
                 >
                   Sign Up
                 </Link>

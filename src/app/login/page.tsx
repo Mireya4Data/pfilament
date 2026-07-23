@@ -54,7 +54,7 @@ export default function LoginPage() {
             Welcome Back
           </h2>
           <p className="text-xs text-[#8b949e]">
-            Sign in to your showcase project workspace
+            Sign in to your Fillamanet workspace
           </p>
         </div>
 
@@ -70,14 +70,14 @@ export default function LoginPage() {
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-[#8b949e]" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8b949e] pointer-events-none" />
               <input
                 type="email"
                 required
                 placeholder="email@university.edu"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full glass-input"
+                className="w-full glass-input pl-10"
               />
             </div>
           </div>
@@ -87,14 +87,14 @@ export default function LoginPage() {
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-[#8b949e]" />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8b949e] pointer-events-none" />
               <input
                 type="password"
                 required
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full glass-input"
+                className="w-full glass-input pl-10"
               />
             </div>
           </div>
