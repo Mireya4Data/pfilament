@@ -208,7 +208,7 @@ export default function ProjectsPage() {
                 <label className="form-label">Live Deployment / Repo Link *</label>
                 <div className="relative">
                   <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none" style={{ color: 'var(--text-placeholder)' }} />
-                  <input type="url" required placeholder="https://my-app.vercel.app" value={projectLink} onChange={(e) => setProjectLink(e.target.value)} className="glass-input pl-10" />
+                  <input type="url" required placeholder=" https://my-app.vercel.app" value={projectLink} onChange={(e) => setProjectLink(e.target.value)} className="glass-input pl-10" />
                 </div>
               </div>
               <div className="md:col-span-2">

@@ -87,7 +87,7 @@ export default function LoginPage() {
                   id="login-email"
                   type="email"
                   required
-                  placeholder="email@university.edu"
+                  placeholder=" email@university.edu"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="glass-input pl-11"
@@ -103,7 +103,7 @@ export default function LoginPage() {
                   id="login-password"
                   type="password"
                   required
-                  placeholder="••••••••"
+                  placeholder=" ••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="glass-input pl-11"

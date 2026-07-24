@@ -93,7 +93,7 @@ export default function Navbar() {
               />
               <input
                 type="text"
-                placeholder="Search projects or teams..."
+                placeholder=" Search projects or teams..."
                 value={globalSearch}
                 onChange={(e) => setGlobalSearch(e.target.value)}
                 style={{

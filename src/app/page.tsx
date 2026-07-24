@@ -211,7 +211,7 @@ function ShowcaseFeedContent() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 pointer-events-none" style={{ color: 'var(--text-placeholder)' }} />
                 <input
                   type="text"
-                  placeholder="Title, description..."
+                  placeholder=" Title, description..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="glass-input pl-9 text-xs"
