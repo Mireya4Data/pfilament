@@ -305,7 +305,7 @@ export default function Navbar() {
       {/* Mobile Navigation Bar */}
       {user && (
         <div
-          className="md:hidden flex items-center justify-around py-2.5"
+          className="md:hidden flex items-center justify-around py-2.5 overflow-x-auto no-scrollbar"
           style={{
             borderTop: '1px solid var(--border-soft)',
             background: 'rgba(248,250,252,0.9)',

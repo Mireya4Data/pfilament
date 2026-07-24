@@ -218,7 +218,7 @@ export default function ProjectWorkspacePage() {
               <span style={{ color: 'var(--text-placeholder)' }}>/</span>
               <span className="font-extrabold text-xl sm:text-2xl font-sans tracking-tight" style={{ color: 'var(--text-primary)' }}>{project.title}</span>
             </div>
-            <div className="flex items-center gap-3 text-xs" style={{ color: 'var(--text-muted)' }}>
+            <div className="flex flex-wrap items-center gap-3 text-xs" style={{ color: 'var(--text-muted)' }}>
               <span className={`badge-${project.status === 'active' ? 'green' : project.status === 'completed' ? 'purple' : 'github'} capitalize`}>{project.status}</span>
               {project.academic_session && <span>Session: {project.academic_session}</span>}
               <span>Created {new Date(project.created_at).toLocaleDateString()}</span>
@@ -324,9 +324,9 @@ export default function ProjectWorkspacePage() {
               </div>
 
               {profile ? (
-                <form onSubmit={handlePostComment} className="flex gap-3">
+                <form onSubmit={handlePostComment} className="flex flex-col sm:flex-row gap-3">
                   <input type="text" placeholder="Leave a comment, review, or feedback..." value={commentContent} onChange={(e) => setCommentContent(e.target.value)} className="flex-grow glass-input text-sm px-4 py-3" />
-                  <button type="submit" className="glass-button text-sm px-6 shrink-0 shadow-sm" style={{ background: 'var(--text-primary)' }}>
+                  <button type="submit" className="glass-button text-sm px-6 shrink-0 shadow-sm w-full sm:w-auto" style={{ background: 'var(--text-primary)' }}>
                     <Send className="h-4 w-4" /> <span>Post</span>
                   </button>
                 </form>

@@ -9,8 +9,8 @@
   /* ---- Backgrounds ---- */
   --bg-primary:        #FFFFFF;
   --bg-secondary:      #F8FAFC;
-  --bg-section:        #F4F6FB;
-  --bg-hover:          #EEF4FF;
+  --bg-section:        #F4F5F7;
+  --bg-hover:          #F0F1F5;
 
   /* ---- Typography ---- */
   --text-primary:      #0F172A;
@@ -88,9 +88,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Subtle layered gradient base */
   background-image:
-    radial-gradient(at 10% 5%, rgba(59,130,246,0.08) 0px, transparent 55%),
-    radial-gradient(at 90% 90%, rgba(168,85,247,0.06) 0px, transparent 55%),
-    radial-gradient(at 50% 50%, rgba(34,197,94,0.04) 0px, transparent 70%);
+    radial-gradient(at 10% 5%, rgba(59,130,246,0.015) 0px, transparent 55%),
+    radial-gradient(at 90% 90%, rgba(168,85,247,0.01) 0px, transparent 55%),
+    radial-gradient(at 50% 50%, rgba(34,197,94,0.005) 0px, transparent 70%);
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -122,11 +122,11 @@ a {
    GLASS PANEL — Premium floating card
    ============================================================ */
 .glass-panel {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: var(--shadow-float);
+  border: 1px solid rgba(226,232,240,0.6);
+  box-shadow: 0 4px 16px rgba(15,23,42,0.03);
   border-radius: var(--radius-card);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -136,31 +136,31 @@ a {
 }
 
 .glass-panel-hover:hover {
-  background: rgba(255,255,255,0.92);
-  border-color: rgba(255,255,255,0.8);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-4px);
+  background: #FFFFFF;
+  border-color: rgba(226,232,240,0.9);
+  box-shadow: 0 8px 24px rgba(15,23,42,0.06);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
    GITHUB CARD → Premium Light Project Card
    ============================================================ */
 .github-card {
-  background: rgba(255,255,255,0.85);
+  background: #FFFFFF;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-card);
   padding: 1.4rem;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 2px 8px rgba(15,23,42,0.03);
 }
 
 .github-card:hover {
-  border-color: rgba(37,99,235,0.25);
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(37,99,235,0.08);
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.98);
+  border-color: rgba(37,99,235,0.2);
+  box-shadow: 0 6px 16px rgba(15,23,42,0.05), 0 0 0 1px rgba(37,99,235,0.04);
+  transform: translateY(-2px);
+  background: #FFFFFF;
 }
 
 /* ============================================================
@@ -205,27 +205,27 @@ a {
 
 /* Primary CTA */
 .glass-button {
-  background: linear-gradient(135deg, #3B82F6, #2563EB);
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: var(--radius-btn);
   padding: 9px 18px;
-  border: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.25), 0 1px 2px rgba(37,99,235,0.15);
+  box-shadow: 0 2px 5px rgba(37,99,235,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
   letter-spacing: 0.01em;
   font-size: 0.8125rem;
 }
 
 .glass-button:hover {
-  background: linear-gradient(135deg, #60A5FA, #1D4ED8);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37,99,235,0.35), 0 2px 6px rgba(37,99,235,0.2);
+  background: linear-gradient(135deg, #4F8CF6 0%, #1D4ED8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .glass-button:active {
@@ -233,6 +233,42 @@ a {
 }
 
 .glass-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Premium Green CTA */
+.glass-button-green {
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: var(--radius-btn);
+  padding: 9px 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 5px rgba(22,163,74,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
+  letter-spacing: 0.01em;
+  font-size: 0.8125rem;
+}
+
+.glass-button-green:hover {
+  background: linear-gradient(135deg, #4ADE80 0%, #15803D 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.glass-button-green:active {
+  transform: translateY(0);
+}
+
+.glass-button-green:disabled {
   opacity: 0.55;
   cursor: not-allowed;
   transform: none;
@@ -455,10 +491,10 @@ a {
   width: 380px;
   height: 380px;
   border-radius: 50%;
-  background: rgba(59,130,246,0.18);
-  filter: blur(180px);
+  background: rgba(59,130,246,0.03);
+  filter: blur(140px);
   pointer-events: none;
-  animation: blob-drift 10s ease-in-out infinite;
+  animation: blob-drift 12s ease-in-out infinite;
 }
 
 .hero-blob-purple {
@@ -466,10 +502,10 @@ a {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: rgba(168,85,247,0.12);
-  filter: blur(160px);
+  background: rgba(168,85,247,0.025);
+  filter: blur(120px);
   pointer-events: none;
-  animation: blob-drift 13s ease-in-out infinite reverse;
+  animation: blob-drift 14s ease-in-out infinite reverse;
 }
 
 .hero-blob-green {
@@ -477,10 +513,10 @@ a {
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: rgba(34,197,94,0.10);
-  filter: blur(150px);
+  background: rgba(34,197,94,0.02);
+  filter: blur(110px);
   pointer-events: none;
-  animation: blob-drift 11s ease-in-out infinite;
+  animation: blob-drift 15s ease-in-out infinite;
 }
 
 /* ============================================================
@@ -750,7 +786,7 @@ a {
    PREMIUM HERO GRADIENT (page-level)
    ============================================================ */
 .hero-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #eef4ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fcfdfe 50%, #f4f8fc 100%);
 }
 
 /* ============================================================

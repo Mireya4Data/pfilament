@@ -135,9 +135,9 @@ function ShowcaseFeedContent() {
       <div
         className="relative rounded-[24px] overflow-hidden p-8 sm:p-10"
         style={{
-          background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 55%, #eef4ff 100%)',
-          border: '1px solid rgba(226,232,240,0.8)',
-          boxShadow: '0 8px 40px rgba(15,23,42,0.06)',
+          background: 'linear-gradient(135deg, #ffffff 0%, #fcfdfe 55%, #f4f8fc 100%)',
+          border: '1px solid rgba(226,232,240,0.5)',
+          boxShadow: '0 8px 32px rgba(15,23,42,0.04)',
         }}
       >
         {/* Glow blobs */}
@@ -147,11 +147,6 @@ function ShowcaseFeedContent() {
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold"
-              style={{ background: 'rgba(37,99,235,0.08)', color: 'var(--blue-primary)', border: '1px solid rgba(37,99,235,0.15)' }}>
-              <Sparkles className="h-3.5 w-3.5" />
-              Student Engineering Showcase
-            </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               Discover &amp; Showcase{' '}
               <span style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
@@ -174,7 +169,7 @@ function ShowcaseFeedContent() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
-            <Link href="/projects" className="glass-button text-xs font-semibold px-5 py-2.5 animate-float">
+            <Link href="/projects" className="glass-button-green text-xs font-semibold px-5 py-2.5 animate-float">
               <FolderKanban className="h-4 w-4" />
               <span>My Workspaces</span>
             </Link>
@@ -261,7 +256,7 @@ function ShowcaseFeedContent() {
         <div className="lg:col-span-6 space-y-6">
 
           {/* Tab Bar */}
-          <div className="flex items-center gap-1" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+          <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar pb-1" style={{ borderBottom: '1px solid var(--border-soft)' }}>
             {([
               { key: 'all', label: 'Latest Projects', icon: null },
               { key: 'trending', label: 'Most Discussed', icon: TrendingUp },

@@ -589,9 +589,9 @@ function TeamsContent() {
                     <UserPlus className="h-4 w-4" style={{ color: 'var(--blue-primary)' }} />
                     <span>Invite Teammates</span>
                   </h3>
-                  <form onSubmit={handleSearchStudents} className="flex gap-3">
+                  <form onSubmit={handleSearchStudents} className="flex flex-col sm:flex-row gap-3">
                     <input type="text" placeholder="Search student name or email..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-grow glass-input text-sm py-2.5" />
-                    <button type="submit" disabled={searching} className="glass-button text-sm px-5">
+                    <button type="submit" disabled={searching} className="glass-button text-sm px-5 w-full sm:w-auto">
                       <Search className="h-4 w-4" /> <span>{searching ? 'Searching...' : 'Search'}</span>
                     </button>
                   </form>
